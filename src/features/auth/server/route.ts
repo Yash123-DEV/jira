@@ -8,7 +8,6 @@ import { deleteCookie, setCookie } from "hono/cookie";
 import { AUTH_COOKIE } from "../constant";
 import { sessionMiddleware } from "@/lib/session-middleware";
 
-
 const app = new Hono()
    .get("/current",
      sessionMiddleware,
@@ -41,6 +40,7 @@ const app = new Hono()
       console.log("Session ID set:", session.secret);
 
       return c.json({ success: true });
+      
     } catch (err: any) {
       console.error("Login failed:", err);
       return c.json({ success: false, message: "Invalid credentials" }, 401);
@@ -128,13 +128,5 @@ const app = new Hono()
     }
   )
   
-  
-  
-  
-  
-  
-  
-
-
 
 export default app;
